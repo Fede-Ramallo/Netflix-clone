@@ -1,12 +1,24 @@
 import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
-import React, { useState ,useRef } from 'react';
+import React, { useState ,useRef, useEffect } from 'react';
 import './List.css';
 import ListItem from './ListItem';
+import axios from '../../axios';
 
-const List = () => {
+const List = ({ title, fetchURL}) => {
 
     const [isMoved, setIsMoved] = useState(false);
     const [slideNumber, setSlideNumber] = useState(0);
+    const [movies, setMovies] = useState([])
+
+    useEffect(() => {
+        async function fetchData() {
+          const request = await axios.get(fetchURL);
+          setMovies(request.data.results)
+          return request;
+        };
+    
+        fetchData()
+      }, [fetchURL]);
 
     const listRef = useRef();
 
@@ -25,18 +37,13 @@ const List = () => {
 
     return(
         <div className='list'>
-            <div className='listTitle'>Continue to Watch</div>
+            <div className='listTitle'>{title}</div>
             <div className='wrapper'>
                 <ArrowBackIosOutlined className='sliderArrow left'onClick={() => handleClick('left')} style={{display: !isMoved && 'none'}}/>
                 <div className='listContainer' ref={listRef} >
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
-                    <ListItem />
+                    {movies.map((mov) => (
+                        <ListItem key={mov.id} {...mov} />
+                    ))}
                 </div>
                 <ArrowForwardIosOutlined className='sliderArrow right' onClick={() => handleClick("right")} />
             </div>

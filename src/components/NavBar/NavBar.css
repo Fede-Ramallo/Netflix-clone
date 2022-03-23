@@ -28,6 +28,8 @@
 .icon{
     margin: 0px 15px;
     cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 700;
 }
 
 .leftNav{
@@ -91,10 +93,11 @@
 }
 
 .profileCont{
-    width: 30px; height: 30px;
-    border-radius: 5px;
+    width: 32px; height: 32px;
+    border-radius: 4px;
     object-fit: cover;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .profile > .options{
@@ -111,6 +114,20 @@
     display: flex;
     flex-direction: column;
     position: absolute;
+}
+
+.profile > .icon{
+    margin-left: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: #fff transparent;
+    transition: transform 367ms;
+}
+
+.profile:hover > .icon{
+    transform: rotate(180deg);
 }
 
 @media screen and (min-width: 950px) {

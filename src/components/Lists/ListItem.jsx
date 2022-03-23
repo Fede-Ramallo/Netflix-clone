@@ -1,28 +1,37 @@
 import "./ListItem.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { PlayArrow } from "@mui/icons-material";
 import AddIcon from '@mui/icons-material/Add';
 import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
-import videoPrueba from '../../assets/videoPrueba.mp4';
+import { motion } from 'framer-motion';
 
-const ListItem = ({ index }) => {
+const listVariant = {
+  hover: {
+    scale: 1.8,
+    transition:{
+      duration: 0.5,
+      delay: 0.2
+    }
+  }
+}
+
+const ListItem = ({ original_title, overview, backdrop_path }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const trailer = videoPrueba;
+  let srcimg = 'https://image.tmdb.org/t/p/original/' + backdrop_path
   return (
-    <div
+    <motion.div
       className="listItem"
-      style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-    >
-      <img
-        src="https://i.ytimg.com/vi/sMEm2t1bH8k/maxresdefault.jpg"
+      variants={listVariant}
+      whileHover='hover'>
+        <img
+        src={srcimg}
         alt=""
       />
       {isHovered && (
         <>
-          <video src={trailer} autoPlay={true} loop />
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow className="icon" />
@@ -31,20 +40,19 @@ const ListItem = ({ index }) => {
               <ThumbDownAltOutlinedIcon className="icon" />
             </div>
             <div className="itemInfoTop">
-              <div>6 seasons</div>
+              <div>{original_title}</div>
               <div className="limit">+16</div>
               <div>2017</div>
             </div>
             <div className="descItem">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Praesentium hic rem eveniet error possimus, neque ex doloribus.
+              {overview}
             </div>
             <div className="genreItem">Action</div>
           </div>
         </>
       )}
-    </div>
-  );
+    </motion.div>
+  )
 }
 
 export default ListItem;
