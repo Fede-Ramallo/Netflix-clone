@@ -3,21 +3,22 @@ import { Link } from 'react-router-dom'
 import SignUpScreen from './SignUpScreen/SignUpSCreen';
 import './LoginScreen.css';
 import FAQ from './FAQ';
+import FooterLogin from './FooterLogin';
 
-const LoginScreen = () => {
+const LoginScreen = ({ setIsLoggedIn }) => {
     const [signIn, setSignIn] = useState(false);
     return(
         <div className='loginScreen'>
             <div className='loginScreenBg'>
                 <Link to='/'>
-                <img alt='' src='https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png' className='loginScreenLogo'/>
+                <img alt='' src='https://assets.stickpng.com/images/580b57fcd9996e24bc43c529.png' className='loginScreenLogo' onClick={() => setSignIn(false)}/>
                 </Link>
-                <button className='loginScreenBtn'>Sign In</button>
+                <button className='loginScreenBtn' onClick={() => setSignIn(true)}>Sign In</button>
                 <div className='loginScreenGradiant'/>
             </div>
             <div className='loginScreen-body'>
                 {signIn ? (
-                    <SignUpScreen />
+                    <SignUpScreen setIsLoggedIn={setIsLoggedIn}/>
                 ) : (
                 <>
                 <h1>Unlimited movies, TV shows, and more.</h1>
@@ -72,6 +73,7 @@ const LoginScreen = () => {
                 </div>
             </div>
             <FAQ /></div>}
+            <FooterLogin />
         </div>
     )
 }

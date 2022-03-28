@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-import links from '../../utils/links'
+import {links} from '../../utils/links'
 
 const Footer = () => {
     return(

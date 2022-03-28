@@ -5,7 +5,7 @@ import List from '../Lists/Lists';
 import Footer from "../Footer/Footer";
 import requests from '../../utils/Requests';
 
-const Home = () => {
+const Home = ({isLoggedIn, setIsLoggedIn}) => {
     return(
         <div className="mainView">
             <Featured fetchTrending={requests.fetchTrending}/>
