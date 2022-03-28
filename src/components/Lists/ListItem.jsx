@@ -5,6 +5,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ThumbDownAltOutlinedIcon from '@mui/icons-material/ThumbDownAltOutlined';
 import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined';
 import { motion } from 'framer-motion';
+import ReactPlayer from "react-player";
 
 const listVariant = {
   hover: {
@@ -16,12 +17,13 @@ const listVariant = {
   }
 }
 
-const ListItem = ({ original_title, overview, backdrop_path }) => {
+const ListItem = ({ original_title, overview, backdrop_path, poster_path }) => {
   const [isHovered, setIsHovered] = useState(false);
   let srcimg = 'https://image.tmdb.org/t/p/original/' + backdrop_path
   return (
     <motion.div
       className="listItem"
+      style={{ left: isHovered && 1 * 225 - 50 + 1 * 2.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       variants={listVariant}
@@ -32,6 +34,7 @@ const ListItem = ({ original_title, overview, backdrop_path }) => {
       />
       {isHovered && (
         <>
+          <ReactPlayer url='https://www.youtube.com/embed/cvTipU9gN5g?showinfo=0&enablejsapi=1&origin=http://localhost:3000' playing={true}/>
           <div className="itemInfo">
             <div className="icons">
               <PlayArrow className="icon" />

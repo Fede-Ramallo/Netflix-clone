@@ -1,0 +1,185 @@
+.loginScreen{
+
+}
+
+.loginScreenBg{
+    position: relative;
+    background: url('https://assets.nflxext.com/ffe/siteui/vlv3/87a1d9d8-a21d-4109-ba3a-c10d9055f5cf/38b49e26-340b-4f65-99a9-c4f53c124355/AR-en-20220307-popsignuptwoweeks-perspective_alpha_website_large.jpg') center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 747.766px;
+}
+
+.loginScreenLogo{
+    position: absolute;
+    left: 0;
+    width: 150px;
+    height: auto;
+    object-fit: contain;
+    padding-left: 20px;
+}
+
+.loginScreenBtn{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #e50914;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.loginScreenGradiant{
+    width: 100%;
+    z-index: 1;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+.loginScreen-body{
+    width: 100%;
+    max-width: 950px;
+    z-index: 1;
+    color: #fff;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.loginScreen-body > h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+.loginScreen-body > h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 30px;
+    max-width: 800px;
+}
+
+.loginScreen-body > h3 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    max-width: 800px;
+}
+
+.loginScreen-input{
+    margin: 20px;
+    max-width: 800px;
+}
+
+.loginScreen-input > form > input{
+    padding: 10px;
+    outline-width: 0;
+    height: 30px;
+    width: 30%;
+    border: none;
+    max-width: 600px;
+}
+
+.loginScreen-inputBtn{
+    font-size: 1rem;
+    padding: 16px 20px;
+    color: #fff;
+    background-color: #e50914;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.loginScreen-card{
+    display: flex;
+    border-bottom: 8px solid rgb(34, 34, 34);
+    padding: 50px 5%;
+    color: white;
+    overflow: hidden;
+}
+
+.loginScreen-cardcontent{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+
+.loginScreen-titles{
+    width: 50%;
+}
+
+.loginScreen-titles > h1{
+    font-size: 50px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    margin: 0.67em 0;
+}
+
+.loginScreen-titles > h2{
+    font-size: 26px;
+    font-weight: normal;
+    line-height: normal;
+}
+
+.loginScreen-images{
+    width: 50%;
+}
+
+.loginScreen-images > img{
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+@media (max-width: 1000px){
+    .loginScreen-cardcontent{
+        flex-direction: column;
+    }
+    .loginScreen-titles{
+        width: 100%;
+        padding: 0px 45px;
+        text-align: center;
+    }
+    .loginScreen-titles > h1{
+        font-size: 35px;
+    }
+    .loginScreen-titles > h2{
+        font-size: 18px;
+    }
+    .loginScreen-images{
+        width: 100%;
+    padding: 0px 45px;
+    text-align: center;
+    }
+}
+
+@media (max-width: 600px){
+    .loginScreen-body{
+        top:30%
+    }
+    .loginScreen-body > h1{
+        font-size: 35px;
+    }
+    .loginScreen-body > h2{
+        font-size: 18px;
+    }
+    .loginScreen-body > h3{
+        font-size: 18px;
+    }
+}

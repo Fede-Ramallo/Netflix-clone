@@ -1,0 +1,114 @@
+.loginScreen-accordioncontent{
+    max-height: 1200px;
+    font-size: 26px;
+    font-weight: normal;
+    line-height: normal;
+    background: rgb(48, 48, 48);
+    padding: 0.8em 2.2em 0.8em 1.2em;
+    white-space: pre-wrap;
+    user-select: none;
+}
+
+.loginScreen-faqcontainer{
+    display: flex;
+    border-bottom: 8px solid rgb(34, 34, 34);
+}
+
+.loginScreen-faq{
+    display: flex;
+    padding: 70px 45px;
+    flex-direction: column;
+    max-width: 815px;
+    margin: auto;
+}
+
+.loginScreen-faq > h1{
+    font-size: 50px;
+    line-height: 1.1;
+    margin-top: 0px;
+    margin-bottom: 8px;
+    color: white;
+    text-align: center;
+}
+
+.loginScreen-faqcontent{
+    color: white;
+    margin: auto;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 0 8px 0;
+}
+
+.loginScreen-faqcontent:first-of-type{
+    margin-top: 3.5em;
+}
+
+.loginScreen-faqtitle{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    margin-bottom: 1px;
+    font-size: 26px;
+    font-weight: normal;
+    background: rgb(48, 48, 48);
+    padding: 0.8em 1.2em;
+    user-select: none;
+    align-items: center;
+}
+
+.loginScreen-faqtitle > img{
+    filter: brightness(0) invert(1);
+    width: 24px;
+}
+
+.loginScreen-faqinput{
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.loginScreen-faqinput > h3{
+    font-size: 19.2px;
+    color: white;
+    text-align: center;
+}
+
+.loginScreen-faqbtn{
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 70px;
+    background: rgb(229, 9, 20);
+    color: white;
+    text-transform: uppercase;
+    padding: 0px 32px;
+    font-size: 22px;
+    border: 0px;
+    cursor: pointer;
+}
+
+.loginScreen-faqbtn >img{
+    margin-left: 10px;
+    filter: brightness(0) invert(1);
+    width: 24px;
+    height: auto;
+}
+
+.xd{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.xd > input {
+    max-width: 450px;
+    width: 100%;
+    border: 0px;
+    padding: 10px;
+    height: 70px;
+    box-sizing: border-box;
+}

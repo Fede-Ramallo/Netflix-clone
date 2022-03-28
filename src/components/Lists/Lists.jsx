@@ -2,7 +2,7 @@ import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-materi
 import React, { useState ,useRef, useEffect } from 'react';
 import './List.css';
 import ListItem from './ListItem';
-import axios from '../../axios';
+import axios from '../../utils/axios';
 
 const List = ({ title, fetchURL}) => {
 
@@ -34,7 +34,6 @@ const List = ({ title, fetchURL}) => {
             listRef.current.style.transform = `translateX(${-230 + distance}px)`
         }
     }
-
     return(
         <div className='list'>
             <div className='listTitle'>{title}</div>
