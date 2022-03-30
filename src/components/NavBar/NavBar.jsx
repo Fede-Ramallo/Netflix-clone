@@ -34,6 +34,19 @@ const NavBar = ({setIsLoggedIn}) =>{
                     {
                         location.pathname !== '/profile' && 
                         <ul className="ulContainer">
+                        <li className="dropnav">
+                            <span>Exploration</span>
+                            <ArrowDropDownIcon  className="icon"/>
+                            <div className="subMenu">
+                                <ul className="subMenu-list">
+                                    <li><Link to='/browse'>Home</Link></li>
+                                    <li><Link to='/browse/tv'>TV Shows</Link></li>
+                                    <li><Link to='/browse/movies'>Movies</Link></li>
+                                    <li><Link to='/latest'>New & Popular</Link></li>
+                                    <li><Link to='/browse/my-list'>My List</Link></li>
+                                </ul>
+                            </div>
+                        </li>
                         <li className="navigation-tab"><Link to='/browse'>Home</Link></li>
                         <li className="navigation-tab"><Link to='/browse/tv'>TV Shows</Link></li>
                         <li className="navigation-tab"><Link to='/browse/movies'>Movies</Link></li>
@@ -42,12 +55,14 @@ const NavBar = ({setIsLoggedIn}) =>{
                     </ul>
                     }
                 </div>
-                <div>
+                    <div className="searchbox">
+                        <SearchIcon className="icon-search"/>
+                        <input placeholder="Title, Persons, Genres" className="searchBar"/>
+                        </div>
                     <div className="rightNav">
-                        <SearchIcon className="icon"/>
                         <NotificationsIcon className="icon"/>                       
                         <div className="profile">
-                        <img alt="profile pic" src={profile} className='profileCont'/>
+                            <img alt="" src={profile} className='profileCont'/>
                             <ArrowDropDownIcon  className="icon"/>
                             <div className="options">
                                 <div><Link to='/profile'>Settings</Link></div>
@@ -55,7 +70,6 @@ const NavBar = ({setIsLoggedIn}) =>{
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
         </nav>
     )

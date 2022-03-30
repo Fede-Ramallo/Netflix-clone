@@ -30,7 +30,7 @@ const Footer = () => {
                 <button className='service-code'>Service Code</button>
             </div>
             <div className='copyright'>
-                <p>© 1997-2022 Netflix, Inc. (Personal Project Made By Federico Ramallo) All links refer to Oficcial Netflix Site</p>
+                <p>© 1997-2022 Netflix, Inc. (Personal Project Made By Federico Ramallo) All Social Media refer to Netflix Media and links do not interact</p>
             </div>
         </div>
     )

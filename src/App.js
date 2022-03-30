@@ -15,7 +15,7 @@ function App() {
     }
       <Routes>
         <Route exact path='/' element={<LoginScreen setIsLoggedIn={setIsLoggedIn}/>}/>
-        <Route path='/browse' element={<Browse isLoggedIn={isLoggedIn} />} />
+          <Route path='/browse' element={<Browse isLoggedIn={isLoggedIn} />} />
         <Route path='/profile' element={<EditProfile setIsLoggedIn={setIsLoggedIn}/>} />
       </Routes>
     </>

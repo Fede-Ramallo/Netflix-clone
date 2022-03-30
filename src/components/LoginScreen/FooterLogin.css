@@ -39,6 +39,11 @@
     flex: 0 0 50%;
     margin-bottom: 16px;
     box-sizing: border-box;
-    flex-basis: 25%;
     color: grey;
+}
+
+@media (min-width: 1000px) {
+    .linkLogin{
+        flex-basis: 25%;
+    }
 }

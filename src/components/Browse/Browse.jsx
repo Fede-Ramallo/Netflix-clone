@@ -11,13 +11,9 @@ const Home = ({isLoggedIn, setIsLoggedIn}) => {
             <Featured fetchTrending={requests.fetchTrending}/>
             <div className="Rows">
             <List 
-                title='Continue Watching'
-                fetchURL={requests.fetchRandom}
-
-            />
-            <List 
                 title='Netflix Originals'
                 fetchURL={requests.fetchNetflixOriginals}
+                isLargeRow
             />
             <List 
                 title='Trending Now'

@@ -39,7 +39,6 @@
     flex: 0 0 50%;
     margin-bottom: 16px;
     box-sizing: border-box;
-    flex-basis: 25%;
     color: grey;
 }
 
@@ -68,4 +67,10 @@
 .copyright{
     font-size: 11px;
     margin-bottom: 15px;
+}
+
+@media (min-width: 1000px) {
+    .link{
+        flex-basis: 25%;
+    }
 }

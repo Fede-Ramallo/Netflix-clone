@@ -3,6 +3,10 @@
     margin: 3vw 0px;
 }
 
+.wrapper::-webkit-scrollbar{
+    display: none;
+}
+
 .listTitle{
     color: white;
     font-size: 20px;
@@ -12,6 +16,8 @@
 
 .wrapper{
     position: relative;
+    overflow-y: hidden;
+    overflow-x: scroll;
 }
 
 .wrapper > .listContainer{
@@ -42,4 +48,34 @@
 
 .right{
     right: 0;
+}
+
+.listItem{
+    background-color: #0b0b0b;
+    margin-right: 5px;
+    cursor: pointer;
+    color: white;
+    border-radius: 5px;
+    padding: 0 0.2vw;
+}
+.row_poster{
+    max-height: 150px;
+    object-fit: contain;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.row_poster-large{
+    object-fit: contain;
+    max-height: 40vh;
+    height: 500px;
+}
+
+@media (max-width: 1000px){
+    .wrapper > .sliderArrow{
+        display: none;
+    }
+    .wrapper > .listContainer{
+        margin-left: 10px;
+    }
 }
