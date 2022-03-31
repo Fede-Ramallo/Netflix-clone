@@ -1,22 +1,18 @@
-import { ArrowBackIosOutlined, ArrowForwardIosOutlined } from '@mui/icons-material';
 import React, { useState ,useRef, useEffect } from 'react';
 import './List.css';
-import { motion } from 'framer-motion'
 import axios from '../../utils/axios';
+import { useViewport } from '../../utils/useViewport'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+import "swiper/css/effect-flip";
+import "swiper/css/navigation";
 
-const listVariant = {
-    hover: {
-      scale: 1.2,
-      transition:{
-        duration: 0.4,
-      }
-    }
-  }
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
 
 const List = ({ title, fetchURL, isLargeRow = false}) => {
-
-    const [isMoved, setIsMoved] = useState(false);
-    const [slideNumber, setSlideNumber] = useState(0);
+    const [windowDimensions] = useViewport()
+    const { width } = windowDimensions
     const [movies, setMovies] = useState([])
 
     useEffect(() => {
@@ -31,43 +27,65 @@ const List = ({ title, fetchURL, isLargeRow = false}) => {
 
     const listRef = useRef();
 
-    const handleClick = (direction) => {
-        setIsMoved(true)
-        let distance = listRef.current.getBoundingClientRect().x -140
-        if(direction === 'left' && slideNumber > 0){
-            setSlideNumber(slideNumber - 1);
-            listRef.current.style.transform = `translateX(${230 + distance}px)`
-        }
-        if(direction === 'right' && slideNumber < 5){
-            setSlideNumber(slideNumber + 1)
-            listRef.current.style.transform = `translateX(${-230 + distance}px)`
-        }
-    }
     let srcimg = 'https://image.tmdb.org/t/p/original/'
     return(
         <div className='list'>
-            <div className='listTitle'>{title}</div>
-            <div className='wrapper'>
-                <ArrowBackIosOutlined className='sliderArrow left'onClick={() => handleClick('left')} style={{display: !isMoved && 'none'}}/>
+            <h1 className='listTitle'>{title}</h1>
+            <Swiper 
+            className='wrapper'
+            pagination={{clickable: true}}
+            navigation={true}
+            grabCursor={false}
+            draggable={false}
+            slidesPerView={5}
+            loopAdditionalSlides={
+              width >= 1378 ? 4 : width >= 998 ? 3 : width >= 625 ? 2 : 2
+            }
+            breakpoints={{
+              1378: {
+                slidesPerView: 5,
+                slidesPerGroup: 5,
+              },
+              998: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+              },
+              625: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+              0: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+            }}
+            slidesPerGroup={5}
+            preventClicksPropagation={true}
+            preventClicks={true}
+            scrollbar={{ draggable: false, hide: true }}
+            slideToClickedSlide={false}
+            loop={true}
+            >
                 <div className='listContainer' ref={listRef} >
-                    {movies.map((mov) => (
-                            <motion.div
+                    {movies.map((mov, i) => (
+                            <SwiperSlide
                             className="listItem"
-                            variants={listVariant}
-                            whileHover='hover'>
+                            key={i}
+                            >
                               <img
                               src={`${srcimg}${isLargeRow ? mov.poster_path : mov.backdrop_path}`}
                               alt={mov.original_title}
                               className={`row_poster ${isLargeRow && 'row_poster-large'}`}
                               key={mov.id}
                             />
-                          </motion.div>
+                          </SwiperSlide>
                     ))}
                 </div>
-                <ArrowForwardIosOutlined className='sliderArrow right' onClick={() => handleClick("right")} />
-            </div>
+            </Swiper>
         </div>
     )
 }
+
+
 
 export default List;

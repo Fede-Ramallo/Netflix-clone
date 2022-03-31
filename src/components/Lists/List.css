@@ -14,60 +14,41 @@
     margin-left: 50px;
 }
 
-.wrapper{
-    position: relative;
-    overflow-y: hidden;
-    overflow-x: scroll;
-}
-
-.wrapper > .listContainer{
-    margin-left: 50px;
-    display: flex;
-    margin-top: 10px;
-    width: max-content;
-    transform: translateX(0px);
-    transition: all 1s ease;
-}
-
-.wrapper > .sliderArrow{
-    width: 50px;
-    height: 100%;
-    background-color: rgb(22, 22, 22, 0.5);
-    color: white;
-    position: absolute;
-    z-index: 99;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    cursor: pointer;
-}
-
-.left{
-    left: 0;
-}
-
-.right{
-    right: 0;
-}
-
 .listItem{
     background-color: #0b0b0b;
-    margin-right: 5px;
     cursor: pointer;
     color: white;
     border-radius: 5px;
-    padding: 0 0.2vw;
+    width: 260px;
+    transition: all 450ms;
+    padding-right: 0.5rem;
 }
+
+.swiper-wrapper:hover > .swiper-slide{
+    z-index: 10000;
+    opacity: 0.3;
+    transform: scale(0.95);
+}
+
+.swiper-wrapper:hover > .swiper-slide:hover{
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+div.swiper-button-prev, div.swiper-button-next{
+    color: rgb(255, 255, 255);
+}
+
 .row_poster{
-    max-height: 150px;
-    object-fit: contain;
+    height: 100%;
     width: 100%;
-    margin-right: 10px;
+    object-fit: contain;
+    border-radius: 5px;
 }
 
 .row_poster-large{
     object-fit: contain;
-    max-height: 40vh;
+    max-height: 45vh;
     height: 500px;
 }
 

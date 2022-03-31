@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './NavBar.css';
 import SearchIcon from '@mui/icons-material/Search';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import profile from '../../assets/images/profilePicture.png';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const NavBar = ({setIsLoggedIn}) =>{
-
     const [scrolled, setScrolled] = useState(false);
-
+    const recentImageDataUrl = window.localStorage.getItem('recent-image')
+    const [img, setImg] = useState(recentImageDataUrl)
+    useEffect(() => {
+        if(recentImageDataUrl){
+            setImg(recentImageDataUrl);
+        }
+    },[recentImageDataUrl])
+ 
     window.onscroll = () => {
         setScrolled(window.pageYOffset === 0 ? false : true)
         return () => (window.onScroll = null)
@@ -48,10 +53,10 @@ const NavBar = ({setIsLoggedIn}) =>{
                             </div>
                         </li>
                         <li className="navigation-tab"><Link to='/browse'>Home</Link></li>
-                        <li className="navigation-tab"><Link to='/browse/tv'>TV Shows</Link></li>
-                        <li className="navigation-tab"><Link to='/browse/movies'>Movies</Link></li>
-                        <li className="navigation-tab"><Link to='/latest'>New & Popular</Link></li>
-                        <li className="navigation-tab"><Link to='/browse/my-list'>My List</Link></li>
+                        <li className="navigation-tab"><Link to='/browse'>TV Shows</Link></li>
+                        <li className="navigation-tab"><Link to='/browse'>Movies</Link></li>
+                        <li className="navigation-tab"><Link to='/browse'>New & Popular</Link></li>
+                        <li className="navigation-tab"><Link to='/browse'>My List</Link></li>
                     </ul>
                     }
                 </div>
@@ -62,7 +67,7 @@ const NavBar = ({setIsLoggedIn}) =>{
                     <div className="rightNav">
                         <NotificationsIcon className="icon"/>                       
                         <div className="profile">
-                            <img alt="" src={profile} className='profileCont'/>
+                            <img alt="" src={img} className='profileCont'/>
                             <ArrowDropDownIcon  className="icon"/>
                             <div className="options">
                                 <div><Link to='/profile'>Settings</Link></div>
