@@ -1,0 +1,49 @@
+.footerLogininfo{
+    max-width: 980px;
+    margin: 20px auto 0;
+    padding: 0 4%;
+    color: grey;
+}
+
+.socialLogin-links{
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.socialLogin-links > a{
+    margin-right: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.socialLogin-links > a > svg {
+    fill: grey;
+    height: 25px;
+    width: 36px;
+}
+
+.footerLogin-links{
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 0 0 14px 0;
+    padding: 0;
+    flex-basis: 25%;
+}
+
+.linkLogin{
+    list-style: none;
+    flex: 0 0 50%;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    color: grey;
+}
+
+@media (min-width: 1000px) {
+    .linkLogin{
+        flex-basis: 25%;
+    }
+}

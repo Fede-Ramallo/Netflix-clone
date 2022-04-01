@@ -1,7 +1,5 @@
-import React, { useState ,useRef, useEffect } from 'react';
-import './List.css';
-import axios from '../../utils/axios';
-import { useViewport } from '../../utils/useViewport'
+import React, {useEffect} from 'react';
+import { useViewport } from '../../../utils/useViewport'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
@@ -9,27 +7,23 @@ import "swiper/css/effect-flip";
 import "swiper/css/navigation";
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
-
-const List = ({ title, fetchURL, isLargeRow = false, setShowModal, setMovieTitle, setMovieOverview, setMovieImg}) => {
+const Searched = ({setShowModal,setMovieTitle,setMovieOverview,setMovieImg, movies, searchTerm, setMovies }) => {
     const [windowDimensions] = useViewport()
     const { width } = windowDimensions
-    const [movies, setMovies] = useState([])
-
+    const apiKey = 'cc5a9d7cf4bac59dc6eb63d3cba779b3'
     useEffect(() => {
-        async function fetchData() {
-          const request = await axios.get(fetchURL);
-          setMovies(request.data.results)
-          return request;
+        const fetchSearch = () =>{
+            fetch(`https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+            .then(resp => resp.json())
+            .then(({results}) => setMovies(results))
         };
-    
-        fetchData()
-      }, [fetchURL]);
+        fetchSearch();
+    }, [searchTerm, setMovies])
 
-    const listRef = useRef();
     let srcimg = 'https://image.tmdb.org/t/p/original/'
     return(
-        <div className='list'>
-            <h1 className='listTitle'>{title}</h1>
+        <div className='Rows'>
+            <h1 className='listTitle'>Resultados buscados</h1>
             <Swiper 
             className='wrapper'
             pagination={{clickable: true}}
@@ -65,24 +59,23 @@ const List = ({ title, fetchURL, isLargeRow = false, setShowModal, setMovieTitle
             slideToClickedSlide={false}
             loop={true}
             >
-                <div className='listContainer' ref={listRef} >
+                <div className='listContainer' >
                     {movies.map(
-                        (mov, i) => ((isLargeRow && mov.poster_path) ||
-                        (!isLargeRow && mov.backdrop_path)) && 
+                        (mov, i) => mov.backdrop_path && 
                           <SwiperSlide
                           className="listItem"
                           key={i}
                           onClick={() => {
                             setShowModal(true)
                             setMovieImg(mov.backdrop_path)
-                            setMovieTitle((isLargeRow && mov.original_name)|| (!isLargeRow && mov.original_title) )
+                            setMovieTitle((mov.original_name || mov.original_title))
                             setMovieOverview(mov.overview)
                           }}
                           >
                             <img
-                            src={`${srcimg}${isLargeRow ? mov.poster_path : mov.backdrop_path}`}
+                            src={`${srcimg}${mov.backdrop_path}`}
                             alt={mov.original_title}
-                            className={`row_poster ${isLargeRow && 'row_poster-large'}`}
+                            className={'row_poster'}
                             key={mov.id}
                           />
                         </SwiperSlide>)
@@ -93,6 +86,4 @@ const List = ({ title, fetchURL, isLargeRow = false, setShowModal, setMovieTitle
     )
 }
 
-
-
-export default List;
+export default Searched;
