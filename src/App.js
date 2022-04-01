@@ -8,14 +8,16 @@ import EditProfile from "./components/Profile/EditProfile";
 function App() {
   const location = useLocation()
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('')
+  const [movies, setMovies] = useState([])
   return (
     <>
     {
-      location.pathname !== '/' && <NavBar setIsLoggedIn={setIsLoggedIn} />
+      location.pathname !== '/' && <NavBar setIsLoggedIn={setIsLoggedIn} searchTerm={searchTerm} setSearchTerm={setSearchTerm} movies={movies} setMovies={setMovies}/>
     }
       <Routes>
         <Route exact path='/' element={<LoginScreen setIsLoggedIn={setIsLoggedIn}/>}/>
-          <Route path='/browse' element={<Browse isLoggedIn={isLoggedIn} />} />
+        <Route path='/browse' element={<Browse isLoggedIn={isLoggedIn} searchTerm={searchTerm} setSearchTerm={setSearchTerm} movies={movies} setMovies={setMovies} />} />
         <Route path='/profile' element={<EditProfile setIsLoggedIn={setIsLoggedIn}/>} />
       </Routes>
     </>

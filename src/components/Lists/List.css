@@ -48,8 +48,6 @@ div.swiper-button-prev, div.swiper-button-next{
 
 .row_poster-large{
     object-fit: contain;
-    max-height: 45vh;
-    height: 500px;
 }
 
 @media (max-width: 1000px){

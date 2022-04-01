@@ -13,6 +13,7 @@ const requests = {
     fetchDocumentaries:`/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=1&with_genres=99&with_watch_monetization_types=flatrate`,
     fetchMovieGenres:`https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`,
     fetchTvGenres:`https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`,
+    fetchDetails: `https://api.themoviedb.org/3/genre/tv/list?api_key=${API_KEY}&language=en-US`
 };
 
 export default requests;
